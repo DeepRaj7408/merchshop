@@ -111,7 +111,6 @@
 
 .wishlist-animate {
     animation: wishlistPulse 0.5s ease-in-out 3;
-    background: #ff00002d;
   }
   
   @keyframes wishlistPulse {
