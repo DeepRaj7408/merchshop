@@ -9,11 +9,21 @@ const initialState = {
 const shopReducer = (state, action) => {
   switch (action.type) {
     case "ADD_TO_CART":
+      const existsInCart = state.cart.some(item => item.id === action.payload.id);
       return {
         ...state,
-        cart: state.cart.some(item => item.id === action.payload.id)
-          ? state.cart
+        cart: existsInCart 
+          ? state.cart 
           : [...state.cart, { ...action.payload, quantity: 1 }]
+      };
+
+    case "ADD_TO_WISHLIST":
+      const existsInWishlist = state.wishlist.some(item => item.id === action.payload.id);
+      return {
+        ...state,
+        wishlist: existsInWishlist
+          ? state.wishlist
+          : [...state.wishlist, action.payload]
       };
 
     case "REMOVE_FROM_CART":
@@ -30,14 +40,6 @@ const shopReducer = (state, action) => {
             ? { ...item, quantity: action.payload.quantity }
             : item
         )
-      };
-
-    case "ADD_TO_WISHLIST":
-      return {
-        ...state,
-        wishlist: state.wishlist.some(item => item.id === action.payload.id)
-          ? state.wishlist
-          : [...state.wishlist, action.payload]
       };
 
     case "REMOVE_FROM_WISHLIST":
