@@ -14,11 +14,11 @@
 }
 
 .card-image {
-  width: 100%;  /* Ensures the image takes full width */
-  height: auto; /* Maintains aspect ratio */
-  max-height: 250px; /* Prevents images from being too large */
+  width: 100%;  
+  height: auto; 
+  max-height: 250px; 
   border-radius: 5px;
-  object-fit: contain; /* Ensures the entire image is visible */
+  object-fit: contain; 
 }
 
 .card-info {
