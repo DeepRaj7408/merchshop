@@ -32,7 +32,7 @@
     border-radius: 0 0 15px 15px;
 }
 
-/* Example slide backgrounds */
+
 .slide:nth-child(1) { background: url("../assets/images/10.1.jpg") center center/cover; }
 .slide:nth-child(2) { background: url("../assets/images/9.3.jpg") center center/cover; }
 .slide:nth-child(3) { background: url("../assets/images/5.1.jpg") center center/cover; }
@@ -40,7 +40,7 @@
 .slide:nth-child(5) { background: url("../assets/images/1.1.jpg") center center/cover; }
 .slide:nth-child(6) { background: url("../assets/images/4.1.jpg") center center/cover; }
 
-/* Carousel Dots */
+
 .carousel-dots {
     text-align: center;
     margin-top: 10px;
