@@ -17,7 +17,7 @@ const OrderForm = ({ onClose, cartItems }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Simulated API call
+
       await fetch('https://httpbin.org/post', {
         method: 'POST',
         headers: {
@@ -30,7 +30,7 @@ const OrderForm = ({ onClose, cartItems }) => {
         }),
       });
 
-      // Add to orders and clear cart
+
       dispatch({
         type: 'ADD_ORDER',
         payload: {
