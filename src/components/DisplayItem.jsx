@@ -67,6 +67,7 @@ const DisplayItem = ({ item, onClose }) => {
           <ArrowLeft className="icon close" onClick={onClose} size={35} />
           <Heart
             className={`icon wishlist ${wishlistClicked ? 'wishlist-animate' : ''}`}
+            fill={wishlistClicked ? "red": "white"}
             onClick={handleAddToWishlist}
             size={35}
           />
