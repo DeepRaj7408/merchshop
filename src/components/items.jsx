@@ -49,6 +49,7 @@ import img16_3 from "../assets/images/16.3.jpg";
 
 const itemsList = [
   {
+    id: 1,
     name: "Nirman Hoodie",
     photo1: img1_1,
     photo2: img1_2,
@@ -57,6 +58,7 @@ const itemsList = [
     tags: ["nirmaan", "hoodie"],
   },
   {
+    id: 2,
     name: "Postman Hoodie",
     photo1: img2_1,
     photo2: img2_2,
@@ -65,6 +67,7 @@ const itemsList = [
     tags: ["postman", "hoodie"],
   },
   {
+    id: 3,
     name: "NSS Hoodie",
     photo1: img3_1,
     photo2: img3_2,
@@ -73,14 +76,16 @@ const itemsList = [
     tags: ["nss", "hoodie"],
   },
   {
+    id: 4,
     name: "CRAC Hoodie",
     photo1: img4_1,
     photo2: img4_2,
     photo3: img4_3,
     price: 699,
-    tags: ["crac", "Hoodie"],
+    tags: ["crac", "hoodie"],
   },
   {
+    id: 5,
     name: "DVM Hoodie",
     photo1: img5_1,
     photo2: img5_2,
@@ -89,6 +94,7 @@ const itemsList = [
     tags: ["dvm", "hoodie"],
   },
   {
+    id: 6,
     name: "DVM Tshirt",
     photo1: img6_1,
     photo2: img6_2,
@@ -97,6 +103,7 @@ const itemsList = [
     tags: ["dvm", "Tshirt"],
   },
   {
+    id: 7,
     name: "CodingClub Tshirt",
     photo1: img7_1,
     photo2: img7_2,
@@ -105,6 +112,7 @@ const itemsList = [
     tags: ["codingclub", "tshirt"],
   },
   {
+    id: 8,
     name: "SUTT Tshirt",
     photo1: img8_1,
     photo2: img8_2,
@@ -113,6 +121,7 @@ const itemsList = [
     tags: ["sutt", "tshirt"],
   },
   {
+    id: 9,
     name: "Girls Oversized Tshirt (DVM)",
     photo1: img9_1,
     photo2: img9_2,
@@ -121,6 +130,7 @@ const itemsList = [
     tags: ["dvm", "tshirt"],
   },
   {
+    id: 10,
     name: "Girls Tshirt (Pack of 2) (SUTT)",
     photo1: img10_1,
     photo2: img10_2,
@@ -129,6 +139,7 @@ const itemsList = [
     tags: ["sutt", "gadget"],
   },
   {
+    id: 11,
     name: "DVM Bottle",
     photo1: img11_1,
     photo2: img11_2,
@@ -137,6 +148,7 @@ const itemsList = [
     tags: ["dvm", "bottle"],
   },
   {
+    id: 12,
     name: "Postmat Bottle",
     photo1: img12_1,
     photo2: img12_2,
@@ -145,6 +157,7 @@ const itemsList = [
     tags: ["postman", "bottle"],
   },
   {
+    id: 13,
     name: "Coding Club Cap",
     photo1: img13_1,
     photo2: img13_2,
@@ -153,6 +166,7 @@ const itemsList = [
     tags: ["coding club", "cap"],
   },
   {
+    id: 14,
     name: "DVM Cap",
     photo1: img14_1,
     photo2: img14_2,
@@ -161,6 +175,7 @@ const itemsList = [
     tags: ["dvm", "cap"],
   },
   {
+    id: 15,
     name: "Photography Club Keychain",
     photo1: img15_1,
     photo2: img15_2,
@@ -169,6 +184,7 @@ const itemsList = [
     tags: ["photog", "keychain"],
   },
   {
+    id: 16,
     name: "Coding Club Keychain",
     photo1: img16_1,
     photo2: img16_2,
