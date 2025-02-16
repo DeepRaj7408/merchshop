@@ -93,7 +93,7 @@ const itemsList = [
     photo1: img6_1,
     photo2: img6_2,
     photo3: img6_3,
-    price: 25.99,
+    price: 259,
     tags: ["dvm", "Tshirt"],
   },
   {
