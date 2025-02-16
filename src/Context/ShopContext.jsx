@@ -3,76 +3,92 @@ import { createContext, useContext, useReducer, useEffect } from "react";
 const initialState = {
   cart: [],
   wishlist: [],
-  orders: []
+  orders: [],
 };
 
 const shopReducer = (state, action) => {
   switch (action.type) {
     case "ADD_TO_CART":
-      const existsInCart = state.cart.some(item => item.id === action.payload.id);
-      return {
-        ...state,
-        cart: existsInCart 
-          ? state.cart 
-          : [...state.cart, { ...action.payload, quantity: 1 }]
-      };
+      const existingItemIndex = state.cart.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      if (existingItemIndex >= 0) {
+        // Item already exists in the cart, update the quantity
+        const updatedCart = state.cart.map((item, index) =>
+          index === existingItemIndex
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+        return {
+          ...state,
+          cart: updatedCart,
+        };
+      } else {
+        // Item does not exist in the cart, add it with quantity 1
+        return {
+          ...state,
+          cart: [...state.cart, { ...action.payload, quantity: 1 }],
+        };
+      }
 
     case "ADD_TO_WISHLIST":
-      const existsInWishlist = state.wishlist.some(item => item.id === action.payload.id);
+      const existsInWishlist = state.wishlist.some(
+        (item) => item.id === action.payload.id
+      );
       return {
         ...state,
         wishlist: existsInWishlist
           ? state.wishlist
-          : [...state.wishlist, action.payload]
+          : [...state.wishlist, action.payload],
       };
 
     case "REMOVE_FROM_CART":
       return {
         ...state,
-        cart: state.cart.filter(item => item.id !== action.payload)
+        cart: state.cart.filter((item) => item.id !== action.payload),
       };
 
     case "UPDATE_CART_QUANTITY":
       return {
         ...state,
-        cart: state.cart.map(item =>
+        cart: state.cart.map((item) =>
           item.id === action.payload.id
             ? { ...item, quantity: action.payload.quantity }
             : item
-        )
+        ),
       };
 
     case "REMOVE_FROM_WISHLIST":
       return {
         ...state,
-        wishlist: state.wishlist.filter(item => item.id !== action.payload)
+        wishlist: state.wishlist.filter((item) => item.id !== action.payload),
       };
 
     case "MOVE_TO_CART":
       return {
         ...state,
-        wishlist: state.wishlist.filter(item => item.id !== action.payload.id),
-        cart: state.cart.some(item => item.id === action.payload.id)
+        wishlist: state.wishlist.filter((item) => item.id !== action.payload.id),
+        cart: state.cart.some((item) => item.id === action.payload.id)
           ? state.cart
-          : [...state.cart, { ...action.payload, quantity: 1 }]
+          : [...state.cart, { ...action.payload, quantity: 1 }],
       };
 
     case "ADD_ORDER":
       return {
         ...state,
-        orders: [...state.orders, action.payload]
+        orders: [...state.orders, action.payload],
       };
 
     case "CLEAR_CART":
       return {
         ...state,
-        cart: []
+        cart: [],
       };
 
     case "REMOVE_ORDER":
       return {
         ...state,
-        orders: state.orders.filter(order => order.id !== action.payload)
+        orders: state.orders.filter((order) => order.id !== action.payload),
       };
 
     default:
@@ -84,21 +100,20 @@ const ShopContext = createContext();
 
 export const ShopProvider = ({ children }) => {
   const [state, dispatch] = useReducer(shopReducer, initialState, () => {
-    const localCart = localStorage.getItem('cart');
-    const localWishlist = localStorage.getItem('wishlist');
-    const localOrders = localStorage.getItem('orders');
-    
+    const localCart = localStorage.getItem("cart");
+    const localWishlist = localStorage.getItem("wishlist");
+    const localOrders = localStorage.getItem("orders");
     return {
       cart: localCart ? JSON.parse(localCart) : [],
       wishlist: localWishlist ? JSON.parse(localWishlist) : [],
-      orders: localOrders ? JSON.parse(localOrders) : []
+      orders: localOrders ? JSON.parse(localOrders) : [],
     };
   });
 
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(state.cart));
-    localStorage.setItem('wishlist', JSON.stringify(state.wishlist));
-    localStorage.setItem('orders', JSON.stringify(state.orders));
+    localStorage.setItem("cart", JSON.stringify(state.cart));
+    localStorage.setItem("wishlist", JSON.stringify(state.wishlist));
+    localStorage.setItem("orders", JSON.stringify(state.orders));
   }, [state.cart, state.wishlist, state.orders]);
 
   return (
