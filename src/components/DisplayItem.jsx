@@ -13,7 +13,7 @@ const DisplayItem = ({ item, onClose }) => {
   const images = [item.photo1, item.photo2, item.photo3].filter(Boolean);
   const swipeThreshold = 50;
 
-  // Touch handlers
+
   const handleTouchStart = (e) => {
     setStartX(e.touches[0].clientX);
   };
@@ -33,7 +33,7 @@ const DisplayItem = ({ item, onClose }) => {
     }
   };
 
-  // Add to cart handler
+
   const handleAddToCart = () => {
     dispatch({
       type: "ADD_TO_CART",
@@ -43,7 +43,7 @@ const DisplayItem = ({ item, onClose }) => {
     setTimeout(() => setCartClicked(false), 3000);
   };
 
-  // Wishlist handler
+
   const handleAddToWishlist = () => {
     dispatch({
       type: "ADD_TO_WISHLIST",
