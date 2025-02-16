@@ -13,7 +13,7 @@ const shopReducer = (state, action) => {
         (item) => item.id === action.payload.id
       );
       if (existingItemIndex >= 0) {
-        // Item already exists in the cart, update the quantity
+
         const updatedCart = state.cart.map((item, index) =>
           index === existingItemIndex
             ? { ...item, quantity: item.quantity + 1 }
@@ -24,12 +24,34 @@ const shopReducer = (state, action) => {
           cart: updatedCart,
         };
       } else {
-        // Item does not exist in the cart, add it with quantity 1
+
         return {
           ...state,
           cart: [...state.cart, { ...action.payload, quantity: 1 }],
         };
       }
+
+
+
+    case "MOVE_TO_CART":
+      const existingCartItemIndex = state.cart.findIndex(item => item.id === action.payload.id);
+      
+      let updatedCart;
+      if (existingCartItemIndex >= 0) {
+        updatedCart = state.cart.map((item, index) => 
+          index === existingCartItemIndex 
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      } else {
+        updatedCart = [...state.cart, { ...action.payload, quantity: 1 }];
+      }
+
+      return {
+        ...state,
+        wishlist: state.wishlist.filter(item => item.id !== action.payload.id),
+        cart: updatedCart
+      };
 
     case "ADD_TO_WISHLIST":
       const existsInWishlist = state.wishlist.some(
@@ -42,21 +64,23 @@ const shopReducer = (state, action) => {
           : [...state.wishlist, action.payload],
       };
 
+
     case "REMOVE_FROM_CART":
       return {
         ...state,
-        cart: state.cart.filter((item) => item.id !== action.payload),
+        cart: state.cart.filter(item => item.id !== action.payload)
       };
 
     case "UPDATE_CART_QUANTITY":
       return {
         ...state,
-        cart: state.cart.map((item) =>
+        cart: state.cart.map(item =>
           item.id === action.payload.id
             ? { ...item, quantity: action.payload.quantity }
             : item
-        ),
+        )
       };
+
 
     case "REMOVE_FROM_WISHLIST":
       return {
