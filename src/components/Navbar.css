@@ -1,4 +1,4 @@
-/* General Navbar Styling */
+
 
 .navbar {
     display: flex;
@@ -6,13 +6,11 @@
     justify-content: space-between;
     background-color: transparent;
     padding: 10px 20px;
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
     z-index: 2;
     position: fixed;
     width: 100vw;
   }
   
-  /* Menu Button */
   .menu-btn {
     background: none;
     border: none;
@@ -22,7 +20,6 @@
     left: -15px;
   }
   
-  /* Search Bar */
   .search-container {
     flex-grow: 1;
     margin: 0 15px;
@@ -41,7 +38,7 @@
 
   }
   
-  /* Icons */
+
   .icons {
     display: flex;
     gap: 15px;
